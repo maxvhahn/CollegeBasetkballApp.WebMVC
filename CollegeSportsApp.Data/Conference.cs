@@ -10,13 +10,21 @@ namespace CollegeSportsApp.Data
 {
     public class Conference
     {
+        // One Conference can have many Schools
         [Key]
         public int ConferenceId { get; set; }
-        public ICollection<School> ListOfSchools { get; set; }
+
         [Required]
+        public Guid OwnderId { get; set; }
+
+        [Required]
+        [Display(Name ="Conference")]
         public string ConferenceName { get; set; }
-        [ForeignKey(nameof(School))]
-        public int SchoolId { get; set; }
-        public virtual School School { get; set; }
+        public ICollection<School> ListOfSchools { get; set; }
+        public Conference()
+        {
+            ListOfSchools = new HashSet<School>();
+        }
+        
     }
 }
