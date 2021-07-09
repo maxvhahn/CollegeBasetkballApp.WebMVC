@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CollegeBasetkballApp.WebMVC.Models;
+using CollegeBasetkballApp.WebMVC.Data;
 
 namespace CollegeBasetkballApp.WebMVC.Controllers
 {
