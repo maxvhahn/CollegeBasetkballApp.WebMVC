@@ -1,0 +1,34 @@
+﻿@model CollegeSportsApp.Models.ConferenceModels.ConferenceDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ConferenceDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ConferenceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConferenceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConferenceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConferenceId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ConferenceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
