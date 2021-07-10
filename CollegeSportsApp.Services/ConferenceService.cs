@@ -53,5 +53,37 @@ namespace CollegeSportsApp.Services
                 return query.ToArray();
             }
         }
+
+        public ConferenceDetail GetConferenceById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Conferences
+                        .Single(e => e.ConferenceId == id && e.OwnerId == _userId);
+                return
+                    new ConferenceDetail
+                    {
+                        ConferenceId = entity.ConferenceId,
+                        ConferenceName = entity.ConferenceName
+                    };
+            }
+        }
+
+        public bool UpdateConference(ConferenceEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Conferences
+                        .Single(e => e.ConferenceId == model.ConferenceId && e.OwnerId == _userId);
+
+                entity.ConferenceName = model.ConferenceName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
