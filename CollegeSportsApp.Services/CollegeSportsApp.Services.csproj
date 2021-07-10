@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ConferenceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolServices.cs" />
     <Compile Include="SportServices.cs" />
   </ItemGroup>
   <ItemGroup>
