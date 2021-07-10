@@ -9,7 +9,6 @@ namespace CollegeSportsApp.Models.SportModels
 {
     public class SportCreate
     {
-        public int SportId { get; set; }
         [Required]
         public string SportName { get; set; }
 
