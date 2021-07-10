@@ -11,5 +11,6 @@ namespace CollegeSportsApp.Models.ConferenceModels
     {
         [Display(Name ="Conference Name")]
         public string ConferenceName { get; set; }
+        public int ConferenceId { get; set; }
     }
 }

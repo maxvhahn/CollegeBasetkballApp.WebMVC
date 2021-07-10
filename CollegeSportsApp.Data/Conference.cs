@@ -15,7 +15,7 @@ namespace CollegeSportsApp.Data
         public int ConferenceId { get; set; }
 
         [Required]
-        public Guid OwnderId { get; set; }
+        public Guid OwnerId { get; set; }
 
         [Required]
         [Display(Name ="Conference")]

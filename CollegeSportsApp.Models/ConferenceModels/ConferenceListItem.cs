@@ -9,5 +9,6 @@ namespace CollegeSportsApp.Models.ConferenceModels
     public class ConferenceListItem
     {
         public string ConferenceName { get; set; }
+        public int ConferenceId { get; set; }
     }
 }
