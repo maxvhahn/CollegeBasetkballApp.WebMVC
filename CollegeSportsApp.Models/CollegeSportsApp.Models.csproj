@@ -60,6 +60,10 @@
     <Compile Include="SchoolModels\SchoolDelete.cs" />
     <Compile Include="SchoolModels\SchoolDetail.cs" />
     <Compile Include="SchoolModels\SchoolListItem.cs" />
+    <Compile Include="SportModels\SportCreate.cs" />
+    <Compile Include="SportModels\SportDetail.cs" />
+    <Compile Include="SportModels\SportEdit.cs" />
+    <Compile Include="SportModels\SportListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

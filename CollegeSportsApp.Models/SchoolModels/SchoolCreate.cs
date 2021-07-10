@@ -15,5 +15,9 @@ namespace CollegeSportsApp.Models.SchoolModels
         [Required]
         [Display(Name = "Mascot Name")]
         public string MascotName { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string State { get; set; }
     }
 }
