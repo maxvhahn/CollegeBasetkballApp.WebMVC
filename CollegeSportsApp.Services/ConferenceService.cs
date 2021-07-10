@@ -85,5 +85,20 @@ namespace CollegeSportsApp.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteConference(int conferenceId)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Conferences
+                        .Single(e => e.ConferenceId == conferenceId && e.OwnerId == _userId);
+
+                ctx.Conferences.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
