@@ -18,6 +18,7 @@ namespace CollegeSportsApp.Services
             _userId = userId;
         }
 
+        //Create a Sport
         public bool CreateSport(SportCreate model)
         {
             var entity =
@@ -34,6 +35,7 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        // GetAllSports
         public IEnumerable<SportListItem> GetSports()
         {
             using (var ctx = new ApplicationDbContext())
@@ -50,6 +52,7 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        //Update a Sport
         public bool UpdateSport(SportEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -66,6 +69,7 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        //Delete a Sport
         public bool DeleteSport(int sportId)
         {
             using(var ctx = new ApplicationDbContext())
@@ -73,7 +77,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Sports
-                        .Select(e => e.SportId == sportId);
+                        .Single(e => e.SportId == sportId);
 
                 ctx.Sports.Remove(entity);
 

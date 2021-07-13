@@ -63,5 +63,64 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
 
             return View(model);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var service = CreateConferenceService();
+            var detail = service.GetConferenceById(id);
+            var model =
+                new ConferenceEdit
+                {
+                    ConferenceId = detail.ConferenceId,
+                    ConferenceName = detail.ConferenceName
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ConferenceEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if(model.ConferenceId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateConferenceService();
+
+            if (service.UpdateConference(model))
+            {
+                TempData["Save Result"] = "The conference was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "The conference could not be updated.");
+            return View(model);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateConferenceService();
+            var model = svc.GetConferenceById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConference(int id)
+        {
+            var service = CreateConferenceService();
+
+            service.DeleteConference(id);
+
+            TempData["SaveResult"] = "The conference was deleted";
+
+            return RedirectToAction("Index");
+        }
     }
 }

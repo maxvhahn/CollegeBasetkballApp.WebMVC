@@ -72,9 +72,9 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Schools
-                        .Select(e => e.SchoolId == schoolId);
+                        .Single(e => e.SchoolId == schoolId);
 
-                ctx.Schools.Remove(schoolId);
+                ctx.Schools.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
