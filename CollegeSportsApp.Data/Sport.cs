@@ -18,6 +18,9 @@ namespace CollegeSportsApp.Data
         [Required]
         [Display(Name ="Sport")]
         public string SportName { get; set; }
+        [Required, MaxLength(200, ErrorMessage ="There are too many characters in this field.")]
+        [Display(Name = "Sport Description")]
+        public string SportDescription { get; set; }
 
         [ForeignKey(nameof(School))]
         public int SchoolId { get; set; }

@@ -10,6 +10,9 @@ namespace CollegeSportsApp.Data
 {
     public class Team
     {
+        [Key]
+        public int TeamId { get; set; }
+
         [Required]
         [Display(Name ="Team")]
         public string TeamName { get; set; }

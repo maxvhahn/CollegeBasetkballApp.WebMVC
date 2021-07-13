@@ -23,6 +23,19 @@ namespace CollegeSportsApp.Data
         [Display(Name ="Mascot")]
         public string MascotName { get; set; }
 
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string State { get; set; }
+
+        public string Address
+        {
+            get
+            {
+                return (City + " " + State);
+            }
+        }
 
         [ForeignKey(nameof(Conference))]
         public int ConferenceId { get; set; }

@@ -54,11 +54,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AthleteModels\AthleteCreate.cs" />
+    <Compile Include="AthleteModels\AthleteDetail.cs" />
+    <Compile Include="AthleteModels\AthleteEdit.cs" />
+    <Compile Include="AthleteModels\AthleteListItem.cs" />
+    <Compile Include="ConferenceModels\ConferenceCreate.cs" />
+    <Compile Include="ConferenceModels\ConferenceDetail.cs" />
+    <Compile Include="ConferenceModels\ConferenceEdit.cs" />
+    <Compile Include="ConferenceModels\ConferenceListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolModels\SchoolCreate.cs" />
+    <Compile Include="SchoolModels\SchoolDelete.cs" />
+    <Compile Include="SchoolModels\SchoolDetail.cs" />
+    <Compile Include="SchoolModels\SchoolListItem.cs" />
+    <Compile Include="SportModels\SportCreate.cs" />
+    <Compile Include="SportModels\SportDetail.cs" />
+    <Compile Include="SportModels\SportEdit.cs" />
+    <Compile Include="SportModels\SportListItem.cs" />
+    <Compile Include="TeamModels\TeamCreate.cs" />
+    <Compile Include="TeamModels\TeamDetail.cs" />
+    <Compile Include="TeamModels\TeamEdit.cs" />
+    <Compile Include="TeamModels\TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
