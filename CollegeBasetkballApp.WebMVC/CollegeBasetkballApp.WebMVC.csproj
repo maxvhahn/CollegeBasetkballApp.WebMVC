@@ -168,9 +168,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AthleteController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\SportController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,9 +242,19 @@
     <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\Conference\Create.cshtml" />
     <Content Include="Views\Conference\Details.cshtml" />
+    <Content Include="Views\Sport\Details.cshtml" />
+    <Content Include="Views\Sport\Index.cshtml" />
+    <Content Include="Views\Sport\Create.cshtml" />
+    <Content Include="Views\Sport\Edit.cshtml" />
+    <Content Include="Views\Sport\Delete.cshtml" />
+    <Content Include="Views\Conference\Edit.cshtml" />
+    <Content Include="Views\Conference\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Athlete\" />
+    <Folder Include="Views\School\" />
+    <Folder Include="Views\Team\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
