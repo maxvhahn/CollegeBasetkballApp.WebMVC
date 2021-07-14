@@ -242,12 +242,18 @@
     <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\Conference\Create.cshtml" />
     <Content Include="Views\Conference\Details.cshtml" />
+    <Content Include="Views\Sport\Details.cshtml" />
+    <Content Include="Views\Sport\Index.cshtml" />
+    <Content Include="Views\Sport\Create.cshtml" />
+    <Content Include="Views\Sport\Edit.cshtml" />
+    <Content Include="Views\Sport\Delete.cshtml" />
+    <Content Include="Views\Conference\Edit.cshtml" />
+    <Content Include="Views\Conference\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Athlete\" />
     <Folder Include="Views\School\" />
-    <Folder Include="Views\Sport\" />
     <Folder Include="Views\Team\" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CollegeBasetkballApp.WebMVC.Controllers
 {
+    [Authorize]
     public class TeamController : Controller
     {
         // GET: Team

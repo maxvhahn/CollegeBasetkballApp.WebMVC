@@ -52,6 +52,25 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        //Get Sport by Id
+        public SportDetail GetSportById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Sports
+                        .Single(e => e.SportId == id);
+                return
+                    new SportDetail
+                    {
+                        SportId = entity.SportId,
+                        SportName = entity.SportName,
+                        SportDescription = entity.SportDescription
+                    };
+            }
+        }
+
         //Update a Sport
         public bool UpdateSport(SportEdit model)
         {
