@@ -49,6 +49,24 @@ namespace CollegeSportsApp.Services
                 return query.ToArray();
             }
         }
+
+        //Get a Team by Id
+        public TeamDetail GetTeamById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Teams
+                        .Single(e => e.TeamId == id);
+                return
+                    new TeamDetail
+                    {
+                        TeamId = entity.TeamId,
+                        TeamName = entity.TeamName
+                    };
+            }
+        }
         //Update a Team
         public bool UpdateTeam(TeamEdit model)
         {

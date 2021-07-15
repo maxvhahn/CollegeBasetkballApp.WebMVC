@@ -11,6 +11,12 @@ namespace CollegeSportsApp.Services
 {
     public class AthleteService
     {
+        private readonly Guid _userId;
+        public AthleteService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         //Create Athlete
         public bool CreateAthlete(AthleteCreate model)
         {
@@ -44,6 +50,25 @@ namespace CollegeSportsApp.Services
                 return query.ToArray();
             }
         }
+
+        public AthleteDetail GetAthleteById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Athletes
+                        .Single(e => e.AthleteId == id);
+                return
+                    new AthleteDetail
+                    {
+                        AthleteId = entity.AthleteId,
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName
+                    };
+            }
+        }
+
         //Update Athlete
         public bool UpdateAthlete(AthleteEdit model)
         {
