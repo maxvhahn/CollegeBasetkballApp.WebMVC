@@ -57,17 +57,55 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Get SchoolRead View
         public ActionResult Details(int id)
         {
-            var svc = 
+            var svc = CreateSchoolService();
+            var model = svc.GetSchoolById(id);
+
+            return View(model);
         }
 
         // Post SchoolRead View
 
 
         // Get SchoolUpdate View
-
+        public ActionResult Edit(int id)
+        {
+            var service = CreateSchoolService();
+            var detail = service.GetSchoolById(id);
+            var model =
+                new SchoolEdit
+                {
+                    SchoolId = detail.SchoolId,
+                    SchoolName = detail.SchoolName,
+                    MascotName = detail.MascotName,
+                    City = detail.City,
+                    State = detail.State
+                };
+            return View(model);
+        }
 
         // Post SchoolUpdate View
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, SchoolEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            if(model.SchoolId != id)
+            {
+                ModelState.AddModelError("", "Id mismatch");
+                return View(model);
+            }
 
+            var service = CreateSchoolService();
+
+            if (service.UpdateSchool(model))
+            {
+                TempData["Save Result"] = "The School was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "The school could not be updated.");
+            return View(model);
+        }
 
         // Get SchoolDelete View
         public ActionResult Delete(int id)
