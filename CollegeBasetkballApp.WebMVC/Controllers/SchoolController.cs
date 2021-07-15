@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CollegeSportsApp.Models.SchoolModels;
+using CollegeSportsApp.Services;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +15,11 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // GET: School
         public ActionResult Index()
         {
-            return View();
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SchoolServices(userId);
+            var model = service.GetSchools();
+
+            return View(model);
         }
 
         // Get SchoolCreate View
@@ -22,10 +29,36 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         }
 
         // Post SchoolCreate View
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(SchoolCreate model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
 
+            }
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SchoolServices(userId);
+
+            service.CreateSchool(model);
+
+            return RedirectToAction("Index");
+        }
+
+        private SchoolServices CreateSchoolService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SchoolServices(userId);
+            return service;
+        }
 
         // Get SchoolRead View
-
+        public ActionResult Details(int id)
+        {
+            var svc = 
+        }
 
         // Post SchoolRead View
 
@@ -37,7 +70,13 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
 
 
         // Get SchoolDelete View
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateSchoolService();
+            var model = svc.GetSchoolById(id);
 
+            return View(model);
+        }
 
         // Post SchoolDelete View
         [HttpPost]
@@ -45,7 +84,13 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSchool(int id)
         {
+            var service = CreateSchoolService();
 
+            service.DeleteSchool(id);
+
+            TempData["SaveResult"] = "The school was deleted.";
+
+            return RedirectToAction("Index");
         }
     }
 }

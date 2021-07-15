@@ -11,6 +11,12 @@ namespace CollegeSportsApp.Services
 {
     public class TeamService
     {
+        private readonly Guid _userId;
+        public TeamService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         //Create a Team
         public bool TeamCreate(TeamCreate model)
         {
@@ -28,7 +34,7 @@ namespace CollegeSportsApp.Services
         }
 
         //Read a Team
-        public IEnumerable<TeamListItem> GetAllTeams()
+        public IEnumerable<TeamListItem> GetTeams()
         {
             using (var ctx = new ApplicationDbContext())
             {
