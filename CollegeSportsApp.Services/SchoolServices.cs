@@ -11,6 +11,12 @@ namespace CollegeSportsApp.Services
 {
     public class SchoolServices
     {
+        private readonly Guid _userId;
+
+        public SchoolServices(Guid userId)
+        {
+            _userId = userId;
+        }
         public bool CreateSchool(SchoolCreate model)
         {
             var entity =
@@ -44,6 +50,24 @@ namespace CollegeSportsApp.Services
                             State = e.State,
                         });
                 return query.ToArray();
+            }
+        }
+
+        public SchoolDetail GetSchoolById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Schools
+                        .Single(e => e.SchoolId == id);
+                return
+                    new SchoolDetail
+                    {
+                        SchoolId = entity.SchoolId,
+                        SchoolName = entity.SchoolName
+                    };
+
             }
         }
 
