@@ -19,6 +19,12 @@ namespace CollegeSportsApp.Services
         }
         public bool CreateSchool(SchoolCreate model)
         {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var conference = ctx.Conferences.SingleOrDefault(e => e.ConferenceId == model.ConferenceId);
+                if (conference.OwnerId != _userId)
+                    return false;
+
             var entity =
                 new School()
                 {
@@ -26,10 +32,9 @@ namespace CollegeSportsApp.Services
                     MascotName = model.MascotName,
                     City = model.City,
                     State = model.State,
+                    ConferenceId = model.ConferenceId
                 };
 
-            using (var ctx = new ApplicationDbContext())
-            {
                 ctx.Schools.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -46,6 +51,7 @@ namespace CollegeSportsApp.Services
                         {
                             SchoolId = e.SchoolId,
                             SchoolName = e.SchoolName,
+                            MascotName = e.MascotName,
                             City = e.City,
                             State = e.State,
                         });

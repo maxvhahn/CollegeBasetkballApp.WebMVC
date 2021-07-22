@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.ConferenceName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ConferenceId)
+            @Html.HiddenFor(modelItem => item.ConferenceId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ConferenceId  }) |

@@ -14,6 +14,5 @@ namespace CollegeSportsApp.Models.SportModels
 
         [Required]
         public string SportDescription { get; set; }
-        public int SchoolId { get; set; }
     }
 }

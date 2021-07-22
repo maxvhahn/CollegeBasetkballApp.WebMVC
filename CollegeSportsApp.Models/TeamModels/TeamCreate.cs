@@ -12,5 +12,6 @@ namespace CollegeSportsApp.Models.TeamModels
         [Required]
         [Display(Name ="Team Name")]
         public string TeamName { get; set; }
+        public int SportId { get; set; }
     }
 }
