@@ -17,9 +17,9 @@ namespace CollegeSportsApp.Data
         [Display(Name ="Team")]
         public string TeamName { get; set; }
 
-        [ForeignKey(nameof(School))]
-        public int SchoolId { get; set; }
-        public virtual School School { get; set; }
+        [ForeignKey(nameof(Sport))]
+        public int? SportId { get; set; }
+        public virtual Sport Sport { get; set; }
         public ICollection<Athlete> ListOfAthletes { get; set; }
         public Team()
         {

@@ -41,7 +41,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ConferenceCreate model)
         {
-            if (ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
             var service = CreateConferenceService();
 

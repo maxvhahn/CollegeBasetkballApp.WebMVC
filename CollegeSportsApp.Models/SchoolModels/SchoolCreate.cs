@@ -19,5 +19,6 @@ namespace CollegeSportsApp.Models.SchoolModels
         public string City { get; set; }
         [Required]
         public string State { get; set; }
+        public int ConferenceId { get; set; }
     }
 }

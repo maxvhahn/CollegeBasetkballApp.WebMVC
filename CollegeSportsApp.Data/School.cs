@@ -38,7 +38,7 @@ namespace CollegeSportsApp.Data
         }
 
         [ForeignKey(nameof(Conference))]
-        public int ConferenceId { get; set; }
+        public int? ConferenceId { get; set; }
         public virtual Conference Conference { get; set; }
         public ICollection<Sport> ListOfSports { get; set; }
 

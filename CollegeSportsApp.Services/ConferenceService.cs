@@ -24,6 +24,7 @@ namespace CollegeSportsApp.Services
                 new Conference()
                 {
                     OwnerId = _userId,
+                    ConferenceId = model.ConferenceId,
                     ConferenceName = model.ConferenceName
                 };
 

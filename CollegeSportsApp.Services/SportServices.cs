@@ -25,7 +25,8 @@ namespace CollegeSportsApp.Services
                 new Sport()
                 {
                     SportName = model.SportName,
-                    SportDescription = model.SportDescription
+                    SportDescription = model.SportDescription,
+                    SchoolId = model.SchoolId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -45,8 +46,8 @@ namespace CollegeSportsApp.Services
                         .Sports
                         .Select(e => new SportListItem()
                         {
-                            SportId = e.SportId,
-                            SportName = e.SportName
+                            SportName = e.SportName,
+                            SportDescription = e.SportDescription
                         });
                 return query.ToList();
             }

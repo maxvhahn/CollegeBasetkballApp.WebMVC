@@ -24,6 +24,7 @@ namespace CollegeSportsApp.Services
                 new Team()
                 {
                     TeamName = model.TeamName,
+                    SportId = model.SportId
                 };
 
             using(var ctx = new ApplicationDbContext())
