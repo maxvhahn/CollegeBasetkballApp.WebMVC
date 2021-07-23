@@ -21,16 +21,19 @@ namespace CollegeSportsApp.Services
         //Create a Sport
         public bool CreateSport(SportCreate model)
         {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var sport = ctx.Conferences.First();
+                if (sport.OwnerId != _userId)
+                    return false;
+
             var entity =
                 new Sport()
                 {
                     SportName = model.SportName,
                     SportDescription = model.SportDescription,
-                    SchoolId = model.SchoolId
                 };
 
-            using (var ctx = new ApplicationDbContext())
-            {
                 ctx.Sports.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -46,6 +49,7 @@ namespace CollegeSportsApp.Services
                         .Sports
                         .Select(e => new SportListItem()
                         {
+                            SportId = e.SportId,
                             SportName = e.SportName,
                             SportDescription = e.SportDescription
                         });

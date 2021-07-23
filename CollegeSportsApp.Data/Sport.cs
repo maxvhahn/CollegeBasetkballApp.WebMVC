@@ -15,6 +15,8 @@ namespace CollegeSportsApp.Data
         [Key]
         public int SportId { get; set; }
 
+        public Guid OwnerId { get; set; }
+
         [Required]
         [Display(Name ="Sport")]
         public string SportName { get; set; }
@@ -22,18 +24,15 @@ namespace CollegeSportsApp.Data
         [Display(Name = "Sport Description")]
         public string SportDescription { get; set; }
 
-
-
-        [ForeignKey(nameof(School))]
-        public int? SchoolId { get; set; }
-        public virtual School School { get; set; }
-
         public ICollection<Team> ListOfTeams { get; set; }
 
         public Sport()
         {
             ListOfTeams = new HashSet<Team>();
+            ListOfSchools = new HashSet<School>();
         }
+
+        public ICollection<School> ListOfSchools { get; set; }
 
     }
 }

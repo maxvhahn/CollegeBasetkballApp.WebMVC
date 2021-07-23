@@ -8,6 +8,7 @@ namespace CollegeSportsApp.Models.SportModels
 {
     public class SportListItem
     {
+        public int SportId { get; set; }
         public string SportName { get; set; }
         public string SportDescription { get; set; }
     }

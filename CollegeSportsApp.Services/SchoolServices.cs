@@ -21,7 +21,7 @@ namespace CollegeSportsApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var conference = ctx.Conferences.SingleOrDefault(e => e.ConferenceId == model.ConferenceId);
+                var conference = ctx.Conferences.First();
                 if (conference.OwnerId != _userId)
                     return false;
 
@@ -71,7 +71,10 @@ namespace CollegeSportsApp.Services
                     new SchoolDetail
                     {
                         SchoolId = entity.SchoolId,
-                        SchoolName = entity.SchoolName
+                        SchoolName = entity.SchoolName,
+                        MascotName = entity.MascotName,
+                        City = entity.City,
+                        State = entity.State
                     };
 
             }
