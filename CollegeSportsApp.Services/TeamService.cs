@@ -20,6 +20,11 @@ namespace CollegeSportsApp.Services
         //Create a Team
         public bool TeamCreate(TeamCreate model)
         {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var team = ctx.Sports.Find();
+                if (team.OwnerId != _userId)
+                    return false;
             var entity =
                 new Team()
                 {
@@ -27,8 +32,6 @@ namespace CollegeSportsApp.Services
                     SportId = model.SportId
                 };
 
-            using(var ctx = new ApplicationDbContext())
-            {
                 ctx.Teams.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
