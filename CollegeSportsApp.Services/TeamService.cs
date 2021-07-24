@@ -23,8 +23,8 @@ namespace CollegeSportsApp.Services
             using(var ctx = new ApplicationDbContext())
             {
                 var team = ctx.Sports.Find();
-                if (team.OwnerId != _userId)
-                    return false;
+                //if (team.OwnerId != _userId)
+                //    return false;
             var entity =
                 new Team()
                 {
@@ -47,7 +47,6 @@ namespace CollegeSportsApp.Services
                         .Teams
                         .Select(e => new TeamListItem
                         {
-                            TeamId = e.TeamId,
                             TeamName = e.TeamName,
                         });
                 return query.ToArray();
