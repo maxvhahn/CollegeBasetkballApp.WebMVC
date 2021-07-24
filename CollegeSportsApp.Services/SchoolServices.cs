@@ -21,9 +21,9 @@ namespace CollegeSportsApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var conference = ctx.Conferences.First();
-                if (conference.OwnerId != _userId)
-                    return false;
+                var conference = ctx.Conferences.Find();
+                //if (conference.OwnerId != _userId)
+                //    return false;
 
             var entity =
                 new School()
