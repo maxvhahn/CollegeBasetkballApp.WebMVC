@@ -49,7 +49,6 @@ namespace CollegeSportsApp.Services
                         .Sports
                         .Select(e => new SportListItem()
                         {
-                            SportId = e.SportId,
                             SportName = e.SportName,
                             SportDescription = e.SportDescription
                         });
@@ -69,7 +68,6 @@ namespace CollegeSportsApp.Services
                 return
                     new SportDetail
                     {
-                        SportId = entity.SportId,
                         SportName = entity.SportName,
                         SportDescription = entity.SportDescription
                     };
@@ -84,7 +82,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Sports
-                        .Single(e => e.SportId == model.SportId);
+                        .Single();
 
                 entity.SportName = model.SportName;
                 entity.SportDescription = model.SportDescription;

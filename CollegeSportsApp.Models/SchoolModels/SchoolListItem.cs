@@ -9,8 +9,10 @@ namespace CollegeSportsApp.Models.SchoolModels
 {
     public class SchoolListItem
     {
-        public int SchoolId { get; set; }
+        public int? SchoolId { get; set; }
+        [Display(Name = "School Name")]
         public string SchoolName { get; set; }
+        [Display(Name = "Mascot Name")]
         public string MascotName { get; set; }
         public string Address
         {

@@ -73,17 +73,16 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new TeamEdit
                 {
-                    TeamId = detail.TeamId,
                     TeamName = detail.TeamName
                 };
             return View(model);
         }
 
         //Get: Post View
-        public ActionResult Edit(int id, TeamEdit model)
+        public ActionResult Edit(string teamName, TeamEdit model)
         {
             if (!ModelState.IsValid) return View(model);
-            if(model.TeamId != id)
+            if(model.TeamName != teamName)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

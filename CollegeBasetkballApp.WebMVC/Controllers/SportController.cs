@@ -74,7 +74,6 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new SportEdit
                 {
-                    SportId = detail.SportId,
                     SportName = detail.SportName,
                     SportDescription = detail.SportDescription
                 };
@@ -84,13 +83,13 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Post: UpdateSport View
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, SportEdit model)
+        public ActionResult Edit(string sportName, SportEdit model)
         {
             //if the modelstate isn't valid, return the model passed
             if(!ModelState.IsValid) return View();
 
             //if the model's sportId isn't equal to the id, say it's not matching
-            if(model.SportId != id)
+            if(model.SportName != sportName)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

@@ -28,11 +28,11 @@ namespace CollegeSportsApp.Services
             var entity =
                 new School()
                 {
+                    SchoolId = model.SchoolId,
                     SchoolName = model.SchoolName,
                     MascotName = model.MascotName,
                     City = model.City,
                     State = model.State,
-                    ConferenceId = model.ConferenceId
                 };
 
                 ctx.Schools.Add(entity);
@@ -80,6 +80,8 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        
+
         public bool UpdateSchool(SchoolEdit model)
         {
             using(var ctx = new ApplicationDbContext())
@@ -87,7 +89,8 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Schools
-                        .Single(e => e.SchoolId == model.SchoolId);
+                        .Single();
+
                 entity.SchoolName = model.SchoolName;
                 entity.MascotName = model.MascotName;
                 entity.City = model.City;

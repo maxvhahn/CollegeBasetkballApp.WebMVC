@@ -43,7 +43,6 @@ namespace CollegeSportsApp.Services
                         .Athletes
                         .Select(e => new AthleteListItem
                         {
-                            AthleteId = e.AthleteId,
                             FirstName = e.FirstName,
                             LastName = e.LastName
                         });
@@ -62,7 +61,6 @@ namespace CollegeSportsApp.Services
                 return
                     new AthleteDetail
                     {
-                        AthleteId = entity.AthleteId,
                         FirstName = entity.FirstName,
                         LastName = entity.LastName
                     };
@@ -77,7 +75,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Athletes
-                        .Single(e => e.AthleteId == model.AthleteId);
+                        .Single();
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
 

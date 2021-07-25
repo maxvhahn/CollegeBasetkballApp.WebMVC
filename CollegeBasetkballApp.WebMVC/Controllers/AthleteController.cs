@@ -73,7 +73,6 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new AthleteEdit
                 {
-                    AthleteId = detail.AthleteId,
                     FirstName = detail.FirstName,
                     LastName = detail.LastName
                 };
@@ -83,10 +82,10 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Post: Update
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, AthleteEdit model)
+        public ActionResult Edit(string lastName, AthleteEdit model)
         {
             if (!ModelState.IsValid) return View(model);
-            if(model.AthleteId != id)
+            if(model.LastName != lastName)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

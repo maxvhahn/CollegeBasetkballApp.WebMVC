@@ -264,6 +264,7 @@
     <Content Include="Views\Athlete\Edit.cshtml" />
     <Content Include="Views\Athlete\Delete.cshtml" />
     <Content Include="Views\School\Delete.cshtml" />
+    <Content Include="Views\Conference\DetailConference.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

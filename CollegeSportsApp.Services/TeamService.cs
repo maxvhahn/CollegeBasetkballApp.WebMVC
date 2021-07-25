@@ -29,7 +29,6 @@ namespace CollegeSportsApp.Services
                 new Team()
                 {
                     TeamName = model.TeamName,
-                    SportId = model.SportId
                 };
 
                 ctx.Teams.Add(entity);
@@ -65,7 +64,6 @@ namespace CollegeSportsApp.Services
                 return
                     new TeamDetail
                     {
-                        TeamId = entity.TeamId,
                         TeamName = entity.TeamName
                     };
             }
@@ -78,9 +76,8 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Teams
-                        .Single(e => e.TeamId == model.TeamId);
+                        .Single();
 
-                entity.TeamId = model.TeamId;
                 entity.TeamName = model.TeamName;
 
                 return ctx.SaveChanges() == 1;

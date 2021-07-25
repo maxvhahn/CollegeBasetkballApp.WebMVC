@@ -10,6 +10,5 @@ namespace CollegeSportsApp.Models.AthleteModels
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int TeamId { get; set; }
     }
 }
