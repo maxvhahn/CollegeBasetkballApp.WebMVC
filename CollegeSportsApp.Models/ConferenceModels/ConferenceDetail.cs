@@ -9,7 +9,7 @@ namespace CollegeSportsApp.Models.ConferenceModels
 {
     public class ConferenceDetail
     {
-        public int ConferenceId { get; set; }
+        public int? ConferenceId { get; set; }
         [Display(Name = "Conference Name")]
         public string ConferenceName { get; set; }
     }

@@ -8,8 +8,15 @@ namespace CollegeSportsApp.Models.AthleteModels
 {
     public class AthleteListItem
     {
-        public int AthleteId { get; set; }
+        public int? AthleteId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName 
+        {
+            get
+            {
+                return (FirstName + " " + LastName);
+            }
+        }
     }
 }

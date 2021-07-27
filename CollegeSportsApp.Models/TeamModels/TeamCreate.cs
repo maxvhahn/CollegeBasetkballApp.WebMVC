@@ -9,6 +9,7 @@ namespace CollegeSportsApp.Models.TeamModels
 {
     public class TeamCreate
     {
+        public int TeamId { get; set; }
         [Required]
         [Display(Name ="Team Name")]
         public string TeamName { get; set; }

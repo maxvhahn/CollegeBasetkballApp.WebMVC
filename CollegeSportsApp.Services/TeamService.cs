@@ -20,17 +20,15 @@ namespace CollegeSportsApp.Services
         //Create a Team
         public bool TeamCreate(TeamCreate model)
         {
-            using(var ctx = new ApplicationDbContext())
-            {
-                var team = ctx.Sports.Find();
-                //if (team.OwnerId != _userId)
-                //    return false;
             var entity =
                 new Team()
                 {
-                    TeamName = model.TeamName,
+                    TeamId = model.TeamId,
+                    TeamName = model.TeamName
                 };
 
+            using(var ctx = new ApplicationDbContext())
+            {
                 ctx.Teams.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -46,14 +44,15 @@ namespace CollegeSportsApp.Services
                         .Teams
                         .Select(e => new TeamListItem
                         {
-                            TeamName = e.TeamName,
+                            TeamId = e.TeamId,
+                            TeamName = e.TeamName
                         });
                 return query.ToArray();
             }
         }
 
         //Get a Team by Id
-        public TeamDetail GetTeamById(int id)
+        public TeamDetail GetTeamById(int? id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -64,6 +63,7 @@ namespace CollegeSportsApp.Services
                 return
                     new TeamDetail
                     {
+                        TeamId = entity.TeamId,
                         TeamName = entity.TeamName
                     };
             }

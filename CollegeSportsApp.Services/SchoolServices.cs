@@ -19,12 +19,6 @@ namespace CollegeSportsApp.Services
         }
         public bool CreateSchool(SchoolCreate model)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var conference = ctx.Conferences.Find();
-                //if (conference.OwnerId != _userId)
-                //    return false;
-
             var entity =
                 new School()
                 {
@@ -35,6 +29,10 @@ namespace CollegeSportsApp.Services
                     State = model.State,
                 };
 
+            using (var ctx = new ApplicationDbContext())
+            {
+                //if (conference.OwnerId != _userId)
+                //    return false;
                 ctx.Schools.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -55,7 +53,7 @@ namespace CollegeSportsApp.Services
                             City = e.City,
                             State = e.State,
                         });
-                return query.ToArray();
+                return query.ToArray().OrderBy(x => x.SchoolName);
             }
         }
 
@@ -76,11 +74,8 @@ namespace CollegeSportsApp.Services
                         City = entity.City,
                         State = entity.State
                     };
-
             }
         }
-
-        
 
         public bool UpdateSchool(SchoolEdit model)
         {

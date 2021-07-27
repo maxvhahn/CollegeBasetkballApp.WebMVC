@@ -79,10 +79,12 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         }
 
         //Get: Post View
-        public ActionResult Edit(string teamName, TeamEdit model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, TeamEdit model)
         {
             if (!ModelState.IsValid) return View(model);
-            if(model.TeamName != teamName)
+            if(model.TeamId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
@@ -102,7 +104,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
 
         //Get: Delete View
         [ActionName("Delete")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             var svc = CreateTeamService();
             var model = svc.GetTeamById(id);

@@ -18,6 +18,8 @@ namespace CollegeSportsApp.Services
             _userId = userId;
         }
 
+        //public SportServices() { }
+
         //Create a Sport
         public bool CreateSport(SportCreate model)
         {
@@ -30,6 +32,7 @@ namespace CollegeSportsApp.Services
             var entity =
                 new Sport()
                 {
+                    SportId = model.SportId,
                     SportName = model.SportName,
                     SportDescription = model.SportDescription,
                 };
@@ -49,6 +52,7 @@ namespace CollegeSportsApp.Services
                         .Sports
                         .Select(e => new SportListItem()
                         {
+                            SportId = e.SportId,
                             SportName = e.SportName,
                             SportDescription = e.SportDescription
                         });
@@ -64,10 +68,11 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Sports
-                        .Single(e => e.SportId == id);
+                        .FirstOrDefault(e => e.SportId == id);
                 return
                     new SportDetail
                     {
+                        SportId = entity.SportId,
                         SportName = entity.SportName,
                         SportDescription = entity.SportDescription
                     };

@@ -22,6 +22,12 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             return View(model);
         }
 
+        private SportServices CreateSportService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new SportServices(userId);
+            return service;
+        }
 
         // Get: CreateSport View
         public ActionResult Create()
@@ -47,12 +53,6 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             return View(model);
         }
 
-        private SportServices CreateSportService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new SportServices(userId);
-            return service;
-        }
 
         // Get: ReadSport View
         public ActionResult Details(int id)
@@ -109,6 +109,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         }
 
         // Get: DeleteSport View
+        [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
             var svc = CreateSportService();
