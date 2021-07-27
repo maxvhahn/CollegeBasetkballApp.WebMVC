@@ -12,29 +12,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.SchoolId)
-        </dt>
-
-        <dt>
             @Html.DisplayNameFor(model => model.SchoolName)
         </dt>
-
+        <dd>
+            @Html.DisplayFor(model => model.SchoolName)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.MascotName)
         </dt>
-
+        <dd>
+            @Html.DisplayFor(model => model.MascotName)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {

@@ -73,13 +73,14 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new TeamEdit
                 {
-                    TeamId = detail.TeamId,
                     TeamName = detail.TeamName
                 };
             return View(model);
         }
 
         //Get: Post View
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, TeamEdit model)
         {
             if (!ModelState.IsValid) return View(model);
@@ -103,7 +104,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
 
         //Get: Delete View
         [ActionName("Delete")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             var svc = CreateTeamService();
             var model = svc.GetTeamById(id);

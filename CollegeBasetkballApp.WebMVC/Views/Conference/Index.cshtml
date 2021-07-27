@@ -18,7 +18,7 @@
     @TempData["SaveResult"]
 </div>
 }
-<table class="table">
+<table class="table table-bordered table-striped table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ConferenceName)
@@ -30,9 +30,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.ConferenceName)
-        </td>
-        <td>
-            @Html.HiddenFor(modelItem => item.ConferenceId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ConferenceId  }) |

@@ -25,6 +25,5 @@ namespace CollegeSportsApp.Data
         {
             ListOfSchools = new HashSet<School>();
         }
-        
     }
 }

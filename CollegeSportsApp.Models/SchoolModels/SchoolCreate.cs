@@ -9,6 +9,7 @@ namespace CollegeSportsApp.Models.SchoolModels
 {
     public class SchoolCreate
     {
+        public int SchoolId { get; set; }
         [Required]
         [Display(Name ="School Name")]
         public string SchoolName { get; set; }
@@ -19,6 +20,5 @@ namespace CollegeSportsApp.Models.SchoolModels
         public string City { get; set; }
         [Required]
         public string State { get; set; }
-        public int ConferenceId { get; set; }
     }
 }

@@ -89,6 +89,10 @@
     <Compile Include="Migrations\202107231457381_AddedGuidToSportTable.Designer.cs">
       <DependentUpon>202107231457381_AddedGuidToSportTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107260031181_AddedGuidToAthleteTable.cs" />
+    <Compile Include="Migrations\202107260031181_AddedGuidToAthleteTable.Designer.cs">
+      <DependentUpon>202107260031181_AddedGuidToAthleteTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="School.cs" />
@@ -123,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107231457381_AddedGuidToSportTable.resx">
       <DependentUpon>202107231457381_AddedGuidToSportTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260031181_AddedGuidToAthleteTable.resx">
+      <DependentUpon>202107260031181_AddedGuidToAthleteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

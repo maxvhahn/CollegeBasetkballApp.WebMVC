@@ -73,7 +73,6 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new AthleteEdit
                 {
-                    AthleteId = detail.AthleteId,
                     FirstName = detail.FirstName,
                     LastName = detail.LastName
                 };

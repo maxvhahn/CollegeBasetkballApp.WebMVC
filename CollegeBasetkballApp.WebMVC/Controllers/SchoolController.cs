@@ -74,7 +74,6 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new SchoolEdit
                 {
-                    SchoolId = detail.SchoolId,
                     SchoolName = detail.SchoolName,
                     MascotName = detail.MascotName,
                     City = detail.City,
@@ -86,10 +85,10 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Post SchoolUpdate View
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, SchoolEdit model)
+        public ActionResult Edit(string schoolName, SchoolEdit model)
         {
             if (!ModelState.IsValid) return View(model);
-            if(model.SchoolId != id)
+            if(model.SchoolName != schoolName)
             {
                 ModelState.AddModelError("", "Id mismatch");
                 return View(model);
