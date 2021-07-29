@@ -12,6 +12,7 @@ namespace CollegeSportsApp.Data
     {
         [Key]
         public int TeamId { get; set; }
+        public Guid OwnerId { get; set; }
 
         [Required]
         [Display(Name ="Team")]

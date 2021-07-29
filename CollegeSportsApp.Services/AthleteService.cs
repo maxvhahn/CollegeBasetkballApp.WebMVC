@@ -23,12 +23,14 @@ namespace CollegeSportsApp.Services
             var entity =
                 new Athlete()
                 {
+                    OwnerId = _userId,
                     AthleteId = model.AthleteId,
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
+                    TeamId = model.TeamId
                 };
 
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Athletes.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -37,18 +39,23 @@ namespace CollegeSportsApp.Services
         //Read Athlete
         public IEnumerable<AthleteListItem> GetAllAthletes()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Athletes
-                        .Select(e => new AthleteListItem
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                        e =>
+                        new AthleteListItem
                         {
                             AthleteId = e.AthleteId,
                             FirstName = e.FirstName,
-                            LastName = e.LastName
+                            LastName = e.LastName,
+                            TeamId = e.TeamId,
+                            Team = e.Team
                         });
-                return query.ToArray();
+                return query.ToArray().OrderBy(x => x.TeamId);
             }
         }
 
@@ -59,7 +66,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Athletes
-                        .SingleOrDefault(e => e.AthleteId == id);
+                        .SingleOrDefault(e => e.AthleteId == id && e.OwnerId == _userId);
                 return
                     new AthleteDetail
                     {
@@ -73,12 +80,12 @@ namespace CollegeSportsApp.Services
         //Update Athlete
         public bool UpdateAthlete(AthleteEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Athletes
-                        .Single();
+                        .Single(e => e.AthleteId == model.AthleteId && e.OwnerId == _userId);
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
 

@@ -9,7 +9,7 @@ namespace CollegeSportsApp.Models.SchoolModels
 {
     public class SchoolEdit
     {
-        public int? SchoolId { get; set; }
+        public int SchoolId { get; set; }
         [Display(Name = "School Name")]
         public string SchoolName { get; set; }
         [Display(Name = "Mascot Name")]

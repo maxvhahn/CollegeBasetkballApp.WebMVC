@@ -93,6 +93,22 @@
     <Compile Include="Migrations\202107260031181_AddedGuidToAthleteTable.Designer.cs">
       <DependentUpon>202107260031181_AddedGuidToAthleteTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107272332250_NonNullableConferenceId.cs" />
+    <Compile Include="Migrations\202107272332250_NonNullableConferenceId.Designer.cs">
+      <DependentUpon>202107272332250_NonNullableConferenceId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280100076_IDidntChangeAnything.cs" />
+    <Compile Include="Migrations\202107280100076_IDidntChangeAnything.Designer.cs">
+      <DependentUpon>202107280100076_IDidntChangeAnything.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280140066_DeletedAthlete.cs" />
+    <Compile Include="Migrations\202107280140066_DeletedAthlete.Designer.cs">
+      <DependentUpon>202107280140066_DeletedAthlete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280203424_AdjustedTeamId.cs" />
+    <Compile Include="Migrations\202107280203424_AdjustedTeamId.Designer.cs">
+      <DependentUpon>202107280203424_AdjustedTeamId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="School.cs" />
@@ -130,6 +146,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107260031181_AddedGuidToAthleteTable.resx">
       <DependentUpon>202107260031181_AddedGuidToAthleteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107272332250_NonNullableConferenceId.resx">
+      <DependentUpon>202107272332250_NonNullableConferenceId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280100076_IDidntChangeAnything.resx">
+      <DependentUpon>202107280100076_IDidntChangeAnything.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280140066_DeletedAthlete.resx">
+      <DependentUpon>202107280140066_DeletedAthlete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280203424_AdjustedTeamId.resx">
+      <DependentUpon>202107280203424_AdjustedTeamId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

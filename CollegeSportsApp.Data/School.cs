@@ -14,6 +14,7 @@ namespace CollegeSportsApp.Data
         // An individual school can be part of many conferences 
         [Key]
         public int SchoolId { get; set; }
+        public Guid OwnerId { get; set; }
 
         [Required]
         [Display(Name ="Name of School")]
@@ -38,7 +39,7 @@ namespace CollegeSportsApp.Data
         }
 
         [ForeignKey(nameof(Conference))]
-        public int? ConferenceId { get; set; }
+        public int ConferenceId { get; set; }
         public virtual Conference Conference { get; set; }
         
         [ForeignKey(nameof(Sport))]

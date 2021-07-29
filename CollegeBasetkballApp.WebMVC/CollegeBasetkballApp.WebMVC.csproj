@@ -240,7 +240,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Conference\Index.cshtml" />
-    <Content Include="Views\Conference\Create.cshtml" />
     <Content Include="Views\Conference\Details.cshtml" />
     <Content Include="Views\Sport\Details.cshtml" />
     <Content Include="Views\Sport\Index.cshtml" />
@@ -265,6 +264,7 @@
     <Content Include="Views\Athlete\Delete.cshtml" />
     <Content Include="Views\School\Delete.cshtml" />
     <Content Include="Views\Conference\DetailConference.cshtml" />
+    <Content Include="Views\Conference\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
