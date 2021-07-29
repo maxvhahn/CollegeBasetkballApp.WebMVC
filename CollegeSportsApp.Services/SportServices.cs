@@ -29,13 +29,14 @@ namespace CollegeSportsApp.Services
                 //if (sport.OwnerId != _userId)
                 //    return false;
 
-            var entity =
-                new Sport()
-                {
-                    SportId = model.SportId,
-                    SportName = model.SportName,
-                    SportDescription = model.SportDescription,
-                };
+                var entity =
+                    new Sport()
+                    {
+                        OwnerId = _userId,
+                        SportId = model.SportId,
+                        SportName = model.SportName,
+                        SportDescription = model.SportDescription,
+                    };
 
                 ctx.Sports.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -50,12 +51,14 @@ namespace CollegeSportsApp.Services
                 var query =
                     ctx
                         .Sports
-                        .Select(e => new SportListItem()
-                        {
-                            SportId = e.SportId,
-                            SportName = e.SportName,
-                            SportDescription = e.SportDescription
-                        });
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e => new SportListItem()
+                            {
+                                SportId = e.SportId,
+                                SportName = e.SportName,
+                                SportDescription = e.SportDescription
+                            });
                 return query.ToList();
             }
         }
@@ -68,7 +71,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Sports
-                        .FirstOrDefault(e => e.SportId == id);
+                        .FirstOrDefault(e => e.SportId == id && e.OwnerId == _userId);
                 return
                     new SportDetail
                     {
@@ -87,7 +90,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Sports
-                        .Single();
+                        .SingleOrDefault(e => e.SportId == model.SportId);
 
                 entity.SportName = model.SportName;
                 entity.SportDescription = model.SportDescription;
@@ -99,7 +102,7 @@ namespace CollegeSportsApp.Services
         //Delete a Sport
         public bool DeleteSport(int sportId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

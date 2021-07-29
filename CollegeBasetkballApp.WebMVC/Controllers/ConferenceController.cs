@@ -80,6 +80,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new ConferenceEdit
                 {
+                    ConferenceId = detail.ConferenceId,
                     ConferenceName = detail.ConferenceName
                 };
             return View(model);

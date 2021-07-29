@@ -80,6 +80,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CollegeSportsApp.Data\CollegeSportsApp.Data.csproj">
+      <Project>{0EC847FF-C27E-47C1-9A95-81684AD42DCC}</Project>
+      <Name>CollegeSportsApp.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

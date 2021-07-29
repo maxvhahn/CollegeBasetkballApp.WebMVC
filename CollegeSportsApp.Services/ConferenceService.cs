@@ -25,16 +25,23 @@ namespace CollegeSportsApp.Services
 
         public bool CreateConference(ConferenceCreate model)
         {
+            //if Conferenceid
+            //return message already created
             var entity =
                 new Conference()
                 {
                     OwnerId = _userId,
-                    ConferenceId = model.ConferenceId,
                     ConferenceName = model.ConferenceName
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
+                bool cName = ctx.Conferences.Any(e => e.ConferenceName.Equals(entity.ConferenceName));
+                if (cName)
+                {
+                    return false;
+                }
+
                 ctx.Conferences.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -92,12 +99,12 @@ namespace CollegeSportsApp.Services
 
         public bool UpdateConference(ConferenceEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Conferences
-                        .Single();
+                        .Single(e => e.ConferenceId == model.ConferenceId);
 
                 entity.ConferenceName = model.ConferenceName;
 
@@ -107,7 +114,7 @@ namespace CollegeSportsApp.Services
 
         public bool DeleteConference(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

@@ -25,6 +25,8 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Get: Create
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.TeamList = new TeamService(userId).GetTeams();
             return View();
         }
 
@@ -34,13 +36,13 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         public ActionResult Create(TeamCreate model)
         {
             if (!ModelState.IsValid) return View(model);
-           
+
             var service = CreateTeamService();
 
             if (service.TeamCreate(model))
             {
                 TempData["SaveResult"] = "A team was created.";
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
 
             ModelState.AddModelError("", "Team could not be created.");
@@ -73,6 +75,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new TeamEdit
                 {
+                    TeamId = detail.TeamId,
                     TeamName = detail.TeamName
                 };
             return View(model);
@@ -84,7 +87,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         public ActionResult Edit(int id, TeamEdit model)
         {
             if (!ModelState.IsValid) return View(model);
-            if(model.TeamId != id)
+            if (model.TeamId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);

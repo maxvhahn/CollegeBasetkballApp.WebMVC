@@ -25,6 +25,8 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Get SchoolCreate View
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.ConferenceList = new ConferenceService(userId).GetConferences();
             return View();
         }
 
@@ -33,18 +35,21 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SchoolCreate model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateSchoolService();
+
+            if (service.CreateSchool(model))
             {
-                return View();
-
+                ViewBag.SaveResult = "The school was created.";
+                return RedirectToAction("Index");
             }
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            //var service = new SchoolServices(userId);
 
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new SchoolServices(userId);
-
-            service.CreateSchool(model);
-
-            return RedirectToAction("Index");
+            ModelState.AddModelError("", "The school could not be created.");
+            
+            return View(model);
         }
 
         private SchoolServices CreateSchoolService()
@@ -74,6 +79,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
             var model =
                 new SchoolEdit
                 {
+                    SchoolId = detail.SchoolId,
                     SchoolName = detail.SchoolName,
                     MascotName = detail.MascotName,
                     City = detail.City,
@@ -85,10 +91,10 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Post SchoolUpdate View
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string schoolName, SchoolEdit model)
+        public ActionResult Edit(int id, SchoolEdit model)
         {
             if (!ModelState.IsValid) return View(model);
-            if(model.SchoolName != schoolName)
+            if(model.SchoolId != id)
             {
                 ModelState.AddModelError("", "Id mismatch");
                 return View(model);

@@ -23,11 +23,12 @@ namespace CollegeSportsApp.Services
             var entity =
                 new Team()
                 {
+                    OwnerId = _userId,
                     TeamId = model.TeamId,
                     TeamName = model.TeamName
                 };
 
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Teams.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -42,11 +43,13 @@ namespace CollegeSportsApp.Services
                 var query =
                     ctx
                         .Teams
-                        .Select(e => new TeamListItem
-                        {
-                            TeamId = e.TeamId,
-                            TeamName = e.TeamName
-                        });
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e => new TeamListItem
+                            {
+                                TeamId = e.TeamId,
+                                TeamName = e.TeamName
+                            });
                 return query.ToArray();
             }
         }
@@ -76,7 +79,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Teams
-                        .Single();
+                        .Single(e => e.TeamId == model.TeamId);
 
                 entity.TeamName = model.TeamName;
 
