@@ -11,6 +11,7 @@ namespace CollegeSportsApp.Models.SchoolModels
 {
     public class SchoolCreate
     {
+        [Display(Name ="Conference")]
         public int SchoolId { get; set; }
         [Required]
         [Display(Name ="School Name")]

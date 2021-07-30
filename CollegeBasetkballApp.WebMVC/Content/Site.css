@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: moccasin;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -24,5 +25,5 @@ textarea {
 }
 
 .jumbotron{
-    img-src="background-image: url('file:///C:\Users\maxvh\Downloads\basketballcourts.jpg');"
+    
 }

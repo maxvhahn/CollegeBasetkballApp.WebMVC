@@ -55,7 +55,7 @@ namespace CollegeSportsApp.Services
         }
 
         //Get a Team by Id
-        public TeamDetail GetTeamById(int? id)
+        public TeamDetail GetTeamById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {

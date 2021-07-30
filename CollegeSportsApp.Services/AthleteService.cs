@@ -55,7 +55,7 @@ namespace CollegeSportsApp.Services
                             TeamId = e.TeamId,
                             Team = e.Team
                         });
-                return query.ToArray().OrderBy(x => x.TeamId);
+                return query.ToArray().OrderBy(x => x.LastName);
             }
         }
 

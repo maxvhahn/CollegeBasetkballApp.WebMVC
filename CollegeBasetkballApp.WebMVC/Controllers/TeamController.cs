@@ -107,7 +107,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
 
         //Get: Delete View
         [ActionName("Delete")]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             var svc = CreateTeamService();
             var model = svc.GetTeamById(id);

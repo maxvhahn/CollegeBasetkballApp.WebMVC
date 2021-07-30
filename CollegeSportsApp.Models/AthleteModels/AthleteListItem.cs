@@ -10,7 +10,7 @@ namespace CollegeSportsApp.Models.AthleteModels
 {
     public class AthleteListItem
     {
-        public int? AthleteId { get; set; }
+        public int AthleteId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName 
@@ -20,7 +20,7 @@ namespace CollegeSportsApp.Models.AthleteModels
                 return (FirstName + " " + LastName);
             }
         }
-        [ForeignKey(nameof(TeamId))]
+        [ForeignKey(nameof(Team))]
         public int TeamId { get; set; }
         public virtual Team Team{ get; set; }
     }
