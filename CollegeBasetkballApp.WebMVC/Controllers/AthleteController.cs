@@ -25,6 +25,8 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Get: Create
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.TeamList = new TeamService(userId).GetTeams();
             return View();
         }
 
