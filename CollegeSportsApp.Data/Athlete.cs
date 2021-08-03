@@ -14,6 +14,7 @@ namespace CollegeSportsApp.Data
         //One athlete can belong to many teams
         [Key]
         public int AthleteId { get; set; }
+        public Guid OwnerId { get; set; }
 
         [Required]
         [Display(Name ="First Name")]

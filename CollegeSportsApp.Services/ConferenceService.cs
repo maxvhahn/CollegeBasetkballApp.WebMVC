@@ -1,6 +1,7 @@
 ﻿using CollegeBasetkballApp.WebMVC.Data;
 using CollegeSportsApp.Data;
 using CollegeSportsApp.Models.ConferenceModels;
+using CollegeSportsApp.Models.SchoolModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,15 @@ namespace CollegeSportsApp.Services
             _userId = userId;
         }
 
+        public ConferenceService()
+        {
+
+        }
+
         public bool CreateConference(ConferenceCreate model)
         {
+            //if Conferenceid
+            //return message already created
             var entity =
                 new Conference()
                 {
@@ -29,6 +37,12 @@ namespace CollegeSportsApp.Services
 
             using (var ctx = new ApplicationDbContext())
             {
+                bool cName = ctx.Conferences.Any(e => e.ConferenceName.Equals(entity.ConferenceName));
+                if (cName)
+                {
+                    return false;
+                }
+
                 ctx.Conferences.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -46,11 +60,11 @@ namespace CollegeSportsApp.Services
                             e =>
                                 new ConferenceListItem
                                 {
-                                    ConferenceName = e.ConferenceName,
-                                    ConferenceId = e.ConferenceId
+                                    ConferenceId = e.ConferenceId,
+                                    ConferenceName = e.ConferenceName
                                 });
 
-                return query.ToArray();
+                return query.ToArray().OrderBy(x => x.ConferenceName);
             }
         }
 
@@ -61,7 +75,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Conferences
-                        .Single(e => e.ConferenceId == id && e.OwnerId == _userId);
+                        .SingleOrDefault(e => e.ConferenceId == id && e.OwnerId == _userId);
                 return
                     new ConferenceDetail
                     {
@@ -71,14 +85,50 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        //public IEnumerable<School> GetSchoolByConferenceId(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        //Show a list of schools in an individual conference
+
+        //        //Grab
+        //        var conference = ctx.Conferences.Single(e => e.ConferenceId == id);
+        //        var entity = conference.ListOfSchools.ToList();
+        //        return entity;
+        //    }
+        //}
+
+        public IEnumerable<SchoolListItem> GetSchoolByConferenceId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Schools
+                        .Where(e => e.SchoolId == id && e.OwnerId == _userId)
+                        .Select(
+                        e =>
+                    new SchoolListItem
+                    {
+                        SchoolId = e.SchoolId,
+                        ConferenceId = e.ConferenceId,
+                        Conference = e.Conference,
+                        SchoolName = e.SchoolName,
+                        MascotName = e.MascotName,
+                        City = e.City,
+                        State = e.State,
+                    });
+                return query.ToArray().OrderBy(e => e.SchoolName);
+            }
+        }
         public bool UpdateConference(ConferenceEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Conferences
-                        .Single(e => e.ConferenceId == model.ConferenceId && e.OwnerId == _userId);
+                        .Single(e => e.ConferenceId == model.ConferenceId);
 
                 entity.ConferenceName = model.ConferenceName;
 
@@ -86,14 +136,14 @@ namespace CollegeSportsApp.Services
             }
         }
 
-        public bool DeleteConference(int conferenceId)
+        public bool DeleteConference(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Conferences
-                        .Single(e => e.ConferenceId == conferenceId && e.OwnerId == _userId);
+                        .Single(e => e.ConferenceId == id);
 
                 ctx.Conferences.Remove(entity);
 

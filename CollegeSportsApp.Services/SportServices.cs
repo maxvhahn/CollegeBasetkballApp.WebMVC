@@ -18,18 +18,26 @@ namespace CollegeSportsApp.Services
             _userId = userId;
         }
 
+        //public SportServices() { }
+
         //Create a Sport
         public bool CreateSport(SportCreate model)
         {
-            var entity =
-                new Sport()
-                {
-                    SportName = model.SportName,
-                    SportDescription = model.SportDescription
-                };
-
             using (var ctx = new ApplicationDbContext())
             {
+                var sport = ctx.Conferences.First();
+                //if (sport.OwnerId != _userId)
+                //    return false;
+
+                var entity =
+                    new Sport()
+                    {
+                        OwnerId = _userId,
+                        SportId = model.SportId,
+                        SportName = model.SportName,
+                        SportDescription = model.SportDescription,
+                    };
+
                 ctx.Sports.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
@@ -43,12 +51,34 @@ namespace CollegeSportsApp.Services
                 var query =
                     ctx
                         .Sports
-                        .Select(e => new SportListItem()
-                        {
-                            SportId = e.SportId,
-                            SportName = e.SportName
-                        });
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e => new SportListItem()
+                            {
+                                SportId = e.SportId,
+                                SportName = e.SportName,
+                                SportDescription = e.SportDescription
+                            });
                 return query.ToList();
+            }
+        }
+
+        //Get Sport by Id
+        public SportDetail GetSportById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Sports
+                        .FirstOrDefault(e => e.SportId == id && e.OwnerId == _userId);
+                return
+                    new SportDetail
+                    {
+                        SportId = entity.SportId,
+                        SportName = entity.SportName,
+                        SportDescription = entity.SportDescription
+                    };
             }
         }
 
@@ -60,7 +90,7 @@ namespace CollegeSportsApp.Services
                 var entity =
                     ctx
                         .Sports
-                        .Single(e => e.SportId == model.SportId);
+                        .SingleOrDefault(e => e.SportId == model.SportId);
 
                 entity.SportName = model.SportName;
                 entity.SportDescription = model.SportDescription;
@@ -72,7 +102,7 @@ namespace CollegeSportsApp.Services
         //Delete a Sport
         public bool DeleteSport(int sportId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

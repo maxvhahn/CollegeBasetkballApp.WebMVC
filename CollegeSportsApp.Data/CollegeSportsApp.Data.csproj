@@ -57,6 +57,59 @@
     <Compile Include="Athlete.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202107101637160_InitialCreate.cs" />
+    <Compile Include="Migrations\202107101637160_InitialCreate.Designer.cs">
+      <DependentUpon>202107101637160_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107152339518_FinishedControllers.cs" />
+    <Compile Include="Migrations\202107152339518_FinishedControllers.Designer.cs">
+      <DependentUpon>202107152339518_FinishedControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107201903292_AddedSecondUser.cs" />
+    <Compile Include="Migrations\202107201903292_AddedSecondUser.Designer.cs">
+      <DependentUpon>202107201903292_AddedSecondUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107202042009_nullableConferenceIdinSchoolTableAdded.cs" />
+    <Compile Include="Migrations\202107202042009_nullableConferenceIdinSchoolTableAdded.Designer.cs">
+      <DependentUpon>202107202042009_nullableConferenceIdinSchoolTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107202241285_updatedTablesWithIds.cs" />
+    <Compile Include="Migrations\202107202241285_updatedTablesWithIds.Designer.cs">
+      <DependentUpon>202107202241285_updatedTablesWithIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107221215538_addedSchool.cs" />
+    <Compile Include="Migrations\202107221215538_addedSchool.Designer.cs">
+      <DependentUpon>202107221215538_addedSchool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107222331469_ChangedSchoolandSportTables.cs" />
+    <Compile Include="Migrations\202107222331469_ChangedSchoolandSportTables.Designer.cs">
+      <DependentUpon>202107222331469_ChangedSchoolandSportTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107231457381_AddedGuidToSportTable.cs" />
+    <Compile Include="Migrations\202107231457381_AddedGuidToSportTable.Designer.cs">
+      <DependentUpon>202107231457381_AddedGuidToSportTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107260031181_AddedGuidToAthleteTable.cs" />
+    <Compile Include="Migrations\202107260031181_AddedGuidToAthleteTable.Designer.cs">
+      <DependentUpon>202107260031181_AddedGuidToAthleteTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107272332250_NonNullableConferenceId.cs" />
+    <Compile Include="Migrations\202107272332250_NonNullableConferenceId.Designer.cs">
+      <DependentUpon>202107272332250_NonNullableConferenceId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280100076_IDidntChangeAnything.cs" />
+    <Compile Include="Migrations\202107280100076_IDidntChangeAnything.Designer.cs">
+      <DependentUpon>202107280100076_IDidntChangeAnything.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280140066_DeletedAthlete.cs" />
+    <Compile Include="Migrations\202107280140066_DeletedAthlete.Designer.cs">
+      <DependentUpon>202107280140066_DeletedAthlete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107280203424_AdjustedTeamId.cs" />
+    <Compile Include="Migrations\202107280203424_AdjustedTeamId.Designer.cs">
+      <DependentUpon>202107280203424_AdjustedTeamId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="School.cs" />
     <Compile Include="Sport.cs" />
@@ -65,6 +118,47 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107101637160_InitialCreate.resx">
+      <DependentUpon>202107101637160_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107152339518_FinishedControllers.resx">
+      <DependentUpon>202107152339518_FinishedControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107201903292_AddedSecondUser.resx">
+      <DependentUpon>202107201903292_AddedSecondUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107202042009_nullableConferenceIdinSchoolTableAdded.resx">
+      <DependentUpon>202107202042009_nullableConferenceIdinSchoolTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107202241285_updatedTablesWithIds.resx">
+      <DependentUpon>202107202241285_updatedTablesWithIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107221215538_addedSchool.resx">
+      <DependentUpon>202107221215538_addedSchool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107222331469_ChangedSchoolandSportTables.resx">
+      <DependentUpon>202107222331469_ChangedSchoolandSportTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107231457381_AddedGuidToSportTable.resx">
+      <DependentUpon>202107231457381_AddedGuidToSportTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107260031181_AddedGuidToAthleteTable.resx">
+      <DependentUpon>202107260031181_AddedGuidToAthleteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107272332250_NonNullableConferenceId.resx">
+      <DependentUpon>202107272332250_NonNullableConferenceId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280100076_IDidntChangeAnything.resx">
+      <DependentUpon>202107280100076_IDidntChangeAnything.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280140066_DeletedAthlete.resx">
+      <DependentUpon>202107280140066_DeletedAthlete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107280203424_AdjustedTeamId.resx">
+      <DependentUpon>202107280203424_AdjustedTeamId.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

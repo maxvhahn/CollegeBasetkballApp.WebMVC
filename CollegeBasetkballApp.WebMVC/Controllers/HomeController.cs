@@ -15,14 +15,14 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "What's this all about?";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "";
 
             return View();
         }

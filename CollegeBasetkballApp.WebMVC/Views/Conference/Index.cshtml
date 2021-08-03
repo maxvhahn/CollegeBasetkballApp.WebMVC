@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List of Conferences</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -18,13 +18,10 @@
     @TempData["SaveResult"]
 </div>
 }
-<table class="table">
+<table class="table table-bordered table-striped table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ConferenceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConferenceId)
         </th>
         <th></th>
     </tr>
@@ -32,10 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ConferenceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConferenceId)
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.ConferenceName).ToHtmlString(), "Index", new { })
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ConferenceId  }) |

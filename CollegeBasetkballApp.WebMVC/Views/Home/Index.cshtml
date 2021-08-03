@@ -2,30 +2,29 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
+<div class="jumbotron" style=" background-image: url(https://images.unsplash.com/photo-1570731151787-5e940db0de8a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d29vZCUyMGJhc2tldGJhbGwlMjBjb3VydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60); background-size: 100%;">
+    <h1>College Basketball</h1>
+    <h1>Data Driver</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>About </h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            College Basketball Data Driver is for the...
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("About", null, new { area = string.Empty, controller = "Home"}, Request.Url.Scheme)">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Want to learn more about data driven sports?</h2>
+        <p>Learn more about how data in college basketball can help influence in-game decision making.</p>
+        <p><a class="btn btn-default" href="https://thepowerrank.com/cbb-analytics/">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2><i>FromTheRafters</i> Blog</h2>
+        <p>Follow along each season and offseason for news, notes, and opinions about your favorite team. Previews for each season is released at the beginning of September.</p>
+        <p><a class="btn btn-default" href="https://fromtheraftersblog.wordpress.com">Learn more &raquo;</a></p>
     </div>
 </div>

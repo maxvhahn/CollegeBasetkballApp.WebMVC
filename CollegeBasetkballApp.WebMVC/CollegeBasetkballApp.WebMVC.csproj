@@ -240,15 +240,34 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Conference\Index.cshtml" />
-    <Content Include="Views\Conference\Create.cshtml" />
     <Content Include="Views\Conference\Details.cshtml" />
+    <Content Include="Views\Sport\Details.cshtml" />
+    <Content Include="Views\Sport\Index.cshtml" />
+    <Content Include="Views\Sport\Create.cshtml" />
+    <Content Include="Views\Sport\Edit.cshtml" />
+    <Content Include="Views\Sport\Delete.cshtml" />
+    <Content Include="Views\Conference\Edit.cshtml" />
+    <Content Include="Views\Conference\Delete.cshtml" />
+    <Content Include="Views\School\Index.cshtml" />
+    <Content Include="Views\School\Create.cshtml" />
+    <Content Include="Views\School\Details.cshtml" />
+    <Content Include="Views\School\Edit.cshtml" />
+    <Content Include="Views\Team\Create.cshtml" />
+    <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Team\Details.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Team\Delete.cshtml" />
+    <Content Include="Views\Athlete\Index.cshtml" />
+    <Content Include="Views\Athlete\Create.cshtml" />
+    <Content Include="Views\Athlete\Details.cshtml" />
+    <Content Include="Views\Athlete\Edit.cshtml" />
+    <Content Include="Views\Athlete\Delete.cshtml" />
+    <Content Include="Views\School\Delete.cshtml" />
+    <Content Include="Views\Conference\DetailConference.cshtml" />
+    <Content Include="Views\Conference\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Athlete\" />
-    <Folder Include="Views\School\" />
-    <Folder Include="Views\Sport\" />
-    <Folder Include="Views\Team\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

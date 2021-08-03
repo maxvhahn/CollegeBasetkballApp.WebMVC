@@ -32,6 +32,7 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         // Get
         public ActionResult Create()
         {
+            //ViewBag.ConferenceList = new ConferenceService().GetConferences().OrderBy(x => x.ConferenceName);
             return View();
         }
 
@@ -41,13 +42,13 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ConferenceCreate model)
         {
-            if (ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
             var service = CreateConferenceService();
 
             if (service.CreateConference(model))
             {
-                TempData["SaveResult"] = "Your note was created.";
+                TempData["SaveResult"] = "The conference was created!";
                 return RedirectToAction("Index");
             }
 
@@ -60,6 +61,14 @@ namespace CollegeBasetkballApp.WebMVC.Controllers
         {
             var svc = CreateConferenceService();
             var model = svc.GetConferenceById(id);
+
+            return View(model);
+        }
+
+        public ActionResult DetailConference(int id)
+        {
+            var svc = CreateConferenceService();
+            var model = svc.GetSchoolByConferenceId(id);
 
             return View(model);
         }

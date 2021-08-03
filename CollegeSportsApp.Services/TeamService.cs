@@ -11,16 +11,24 @@ namespace CollegeSportsApp.Services
 {
     public class TeamService
     {
+        private readonly Guid _userId;
+        public TeamService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         //Create a Team
         public bool TeamCreate(TeamCreate model)
         {
             var entity =
                 new Team()
                 {
-                    TeamName = model.TeamName,
+                    OwnerId = _userId,
+                    TeamId = model.TeamId,
+                    TeamName = model.TeamName
                 };
 
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Teams.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -28,19 +36,39 @@ namespace CollegeSportsApp.Services
         }
 
         //Read a Team
-        public IEnumerable<TeamListItem> GetAllTeams()
+        public IEnumerable<TeamListItem> GetTeams()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Teams
-                        .Select(e => new TeamListItem
-                        {
-                            TeamId = e.TeamId,
-                            TeamName = e.TeamName,
-                        });
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e => new TeamListItem
+                            {
+                                TeamId = e.TeamId,
+                                TeamName = e.TeamName
+                            });
                 return query.ToArray();
+            }
+        }
+
+        //Get a Team by Id
+        public TeamDetail GetTeamById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Teams
+                        .Single(e => e.TeamId == id);
+                return
+                    new TeamDetail
+                    {
+                        TeamId = entity.TeamId,
+                        TeamName = entity.TeamName
+                    };
             }
         }
         //Update a Team
@@ -53,7 +81,6 @@ namespace CollegeSportsApp.Services
                         .Teams
                         .Single(e => e.TeamId == model.TeamId);
 
-                entity.TeamId = model.TeamId;
                 entity.TeamName = model.TeamName;
 
                 return ctx.SaveChanges() == 1;
