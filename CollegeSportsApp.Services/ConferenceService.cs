@@ -1,6 +1,7 @@
 ﻿using CollegeBasetkballApp.WebMVC.Data;
 using CollegeSportsApp.Data;
 using CollegeSportsApp.Models.ConferenceModels;
+using CollegeSportsApp.Models.SchoolModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,19 +85,42 @@ namespace CollegeSportsApp.Services
             }
         }
 
-        public IEnumerable<School> GetSchoolByConferenceId(int id)
+        //public IEnumerable<School> GetSchoolByConferenceId(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        //Show a list of schools in an individual conference
+
+        //        //Grab
+        //        var conference = ctx.Conferences.Single(e => e.ConferenceId == id);
+        //        var entity = conference.ListOfSchools.ToList();
+        //        return entity;
+        //    }
+        //}
+
+        public IEnumerable<SchoolListItem> GetSchoolByConferenceId(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                //Show a list of schools in an individual conference
-
-                //Grab
-                var conference = ctx.Conferences.Single(e => e.ConferenceId == id);
-                var entity = conference.ListOfSchools.ToList();
-                return entity;
+                var query =
+                    ctx
+                        .Schools
+                        .Where(e => e.SchoolId == id && e.OwnerId == _userId)
+                        .Select(
+                        e =>
+                    new SchoolListItem
+                    {
+                        SchoolId = e.SchoolId,
+                        ConferenceId = e.ConferenceId,
+                        Conference = e.Conference,
+                        SchoolName = e.SchoolName,
+                        MascotName = e.MascotName,
+                        City = e.City,
+                        State = e.State,
+                    });
+                return query.ToArray().OrderBy(e => e.SchoolName);
             }
         }
-
         public bool UpdateConference(ConferenceEdit model)
         {
             using (var ctx = new ApplicationDbContext())

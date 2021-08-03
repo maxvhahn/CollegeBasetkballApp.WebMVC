@@ -94,6 +94,8 @@ namespace CollegeSportsApp.Services
             }
         }
 
+        
+
         public bool UpdateSchool(SchoolEdit model)
         {
             using (var ctx = new ApplicationDbContext())

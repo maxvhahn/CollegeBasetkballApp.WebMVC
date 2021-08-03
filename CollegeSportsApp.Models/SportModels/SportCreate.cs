@@ -11,9 +11,11 @@ namespace CollegeSportsApp.Models.SportModels
     {
         public int SportId { get; set; }
         [Required]
+        [Display(Name ="Sport Name")]
         public string SportName { get; set; }
 
         [Required]
+        [Display(Name ="Sport Description")]
         public string SportDescription { get; set; }
     }
 }
